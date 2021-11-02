@@ -1,17 +1,19 @@
 buildscript {
-    if (project == rootProject) {
-        repositories {
-            google()
-            jcenter()
-        }
-
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.5.3'
-        }
-    }
+       repositories {
+           google()
+           jcenter()
+           mavenCentral()
+           maven {url 'https://developer.huawei.com/repo/'}
+       }
+       dependencies {
+           classpath 'com.android.tools.build:gradle:3.5.3'
+           //huawei gradle plugin
+           classpath 'com.huawei.agconnect:agcp:1.4.1.300'
+       }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.huawei.agconnect'
 
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
@@ -50,9 +52,24 @@ repositories {
     }
     google()
     jcenter()
+    mavenCentral()
+    maven {url 'https://developer.huawei.com/repo/'}
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    //huawei message server
+    implementation 'com.huawei.hms:push:5.3.0.301'
+    //jpush huawei plugin
+    api 'cn.jiguang.sdk.plugin:huawei:4.2.8'
+    //oppo
+    api 'cn.jiguang.sdk.plugin:oppo:4.2.8'
+    //xiaomi
+    api 'cn.jiguang.sdk.plugin:xiaomi:4.2.8'
+    //vivo
+    api 'cn.jiguang.sdk.plugin:vivo:4.2.8'
+    //meizu
+    api 'cn.jiguang.sdk.plugin:meizu:4.2.8'
 }

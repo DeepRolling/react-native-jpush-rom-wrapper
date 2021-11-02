@@ -1,6 +1,6 @@
 {
   "name": "react-native-jpush-rom-wrapper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "integration of serveral custom rom push servers,base on offical jpush-react-native library(2.8.7)",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -43,9 +43,6 @@
     "url": "https://github.com/DeepRolling/react-native-jpush-rom-wrapper.git/issues"
   },
   "homepage": "https://github.com/DeepRolling/react-native-jpush-rom-wrapper.git#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -77,12 +74,6 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
-    }
   },
   "commitlint": {
     "extends": [
@@ -149,5 +140,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "jpush-react-native": "^2.8.8"
   }
 }
