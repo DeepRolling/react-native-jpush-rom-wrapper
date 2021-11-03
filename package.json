@@ -1,6 +1,6 @@
 {
   "name": "react-native-jpush-rom-wrapper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "integration of serveral custom rom push servers,base on offical jpush-react-native library(2.8.7)",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
