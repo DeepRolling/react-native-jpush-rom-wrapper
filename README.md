@@ -1,5 +1,11 @@
 # react-native-jpush-rom-wrapper
 
+use following command to download package :
+```text
+yarn add react-native-jpush-rom-wrapper
+```
+
+
 integration of serveral custom rom push servers,base on [offical jpush-react-native library](https://github.com/jpush/jpush-react-native)(2.8.7)
 
 * android jpush library : v4.2.8
