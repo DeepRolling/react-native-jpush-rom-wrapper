@@ -1,12 +1,14 @@
 # react-native-jpush-rom-wrapper
 
-integration of serveral custom rom push servers,base on offical jpush-react-native library(2.8.7)
+integration of serveral custom rom push servers,base on [offical jpush-react-native library](https://github.com/jpush/jpush-react-native)(2.8.7)
 
 * android jpush library : v4.2.8
 * ios jpush library : v3.7.4
 
 
-#instructions of integrate system-level push service
+# Instructions of integrate system-level push service
+
+## Android platform
 
 ### Preface
 You need add some proguard rules for jpush-react-native library if you need proguard in your project
@@ -69,8 +71,9 @@ Add following code in proguard file if you use proguard :
 -keep class com.huawei.updatesdk.**{*;}
 -keep class com.huawei.hms.**{*;}
 ```
-The last step you need to do for make HMS work is download the **agconnect-services.json** from huawei developer official website
-and put it to root of app module
+The last step you need to do for make HMS work is download the **agconnect-services.json** from huawei developer official website  and put it to root of app module
+
+> Notice : After these steps , you also need create a project in AppGallery Connect and add the application you created to this project  ,  then you need go to **${your project} -> push server -> config** and open the switch to get things work ! ! !
 
 ### OPPO push service
 
@@ -197,14 +200,22 @@ If you disallow backup in your main module manifest file , when you compile this
 ```text
 Execution failed for task ':app:processDevelopDebugMainManifest'.
 > Manifest merger failed : Attribute application@allowBackup value=(false) from AndroidManifest.xml:24:9-36
-  	is also present at [cn.jiguang.sdk.plugin:huawei:4.2.8] AndroidManifest.xml:12:9-35 value=(true).
-  	Suggestion: add 'tools:replace="android:allowBackup"' to <application> element at AndroidManifest.xml:7:5-12:19 to override.
+   is also present at [cn.jiguang.sdk.plugin:huawei:4.2.8] AndroidManifest.xml:12:9-35 value=(true).
+   Suggestion: add 'tools:replace="android:allowBackup"' to <application> element at AndroidManifest.xml:7:5-12:19 to override.
 
 * Try:
 Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
 
 ```
 You can abandon your backup option or override HUAWEI library backup option by replace tools , it's up to you .
+
+## IOS platform
+
+The steps of config certifications already descripted in Jpush [offical document](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/) , but when I follow these step I also find some place maybe anbiguous :
+
+* when you import the downloaded Apple Push services certificate  to key-chain manager in your macos  , you maybe found there **not have option can let you export the certificate as .p12 format** . You need following the instraction exactly  , open key-chain manager ( delete the imported certificate first if you already import ) , click **My certificates -> Login** , then click **the certificate you download from Apple developer** to import this to key chains , then you will found this option .
+
+After that ,  you need add some code to AppDelegate.m file to register listeners to ios system , refer to example in [offical jpush-react-native library](https://github.com/jpush/jpush-react-native)
 
 ## License
 
